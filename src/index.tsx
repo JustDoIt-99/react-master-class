@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {ThemeProvider} from "styled-components";
 import App from './App';
-import {darkTheme} from "./theme";
+import {lightTheme, darkTheme} from "./theme";
 
 const rootElement = document.getElementById('root');
 
