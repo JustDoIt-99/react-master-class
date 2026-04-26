@@ -13,11 +13,18 @@ const lightTheme = {
     backgroundColor: "whitesmoke"
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+if(!rootElement) {
+    throw new Error("Root element not found");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+
 root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={lightTheme}>
-        <App />
-    </ThemeProvider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <ThemeProvider theme={lightTheme}>
+            <App />
+        </ThemeProvider>
+    </React.StrictMode>
 );
