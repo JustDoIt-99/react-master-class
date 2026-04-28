@@ -1,9 +1,10 @@
 import {Outlet} from "react-router-dom";
-import {createGlobalStyle, ThemeProvider} from "styled-components";
-import {theme} from "./theme";
+import {createGlobalStyle} from "styled-components";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -24,12 +25,12 @@ const GlobalStyle = createGlobalStyle`
         font: inherit;
         vertical-align: baseline;
     }
-    
+
     article, aside, details, figcaption, figure,
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
-    
+
     * {
         box-sizing: border-box;
     }
@@ -42,10 +43,10 @@ const GlobalStyle = createGlobalStyle`
         color: ${props => props.theme.textColor};
         line-height: 1.2;
     }
-    
+
     a {
         text-decoration: none;
-        color:inherit;
+        color: inherit;
     }
 
     ol, ul {
@@ -69,14 +70,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  return (
-      <>
-          <ThemeProvider theme={theme}>
-              <GlobalStyle/>
-              <Outlet/>
-          </ThemeProvider>
-      </>
-  );
+    return (
+        <>
+            <GlobalStyle/>
+            <Outlet/>
+            <ReactQueryDevtools initialIsOpen={true}/>
+        </>
+    );
 }
 
 export default App;
