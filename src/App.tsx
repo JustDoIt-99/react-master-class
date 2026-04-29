@@ -2,7 +2,8 @@ import {Outlet} from "react-router-dom";
 import {createGlobalStyle, ThemeProvider} from "styled-components";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {darkTheme, lightTheme} from "./theme";
-import {useState} from "react";
+import {useRecoilValue} from "recoil";
+import {isDarkAtom} from "./atom";
 
 const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
@@ -72,15 +73,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-
-    const [isDark, setIsDark] = useState(true);
-
-    const toggleDark = () => setIsDark(current => !current);
-
+    const isDark = useRecoilValue(isDarkAtom);
     return (
         <>
             <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-                <button onClick={toggleDark}>Toggle Mode</button>
                 <GlobalStyle/>
                 <Outlet/>
                 <ReactQueryDevtools initialIsOpen={true}/>
